@@ -1,0 +1,400 @@
+body{
+    margin: 0;
+}
+
+
+.nav-link {
+    padding: 10px;
+    color: white;
+}
+
+.nav-link:hover {
+    color: rgb(36, 165, 240);
+}
+
+.nav-item {
+    margin: 10px
+}
+
+.nav-icon {
+    margin: 5px;
+}
+
+/*--------------------------------------------------- slider --------------------------------------------*/
+.carousel {
+    position: relative;
+    padding-top: 60px;
+}
+
+.carousel_inner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel_inner::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.carousel_item {
+    position: relative;
+    float: left;
+    display: none;
+    width: 100%;
+    margin-right: -100%;
+}
+
+/* slide effect */
+.carousel_item__active,
+.carousel_item__pos_prev,
+.carousel_item__pos_next {
+    display: block;
+}
+
+.carousel_item__pos_prev {
+    left: -100%;
+}
+
+.carousel_item__pos_next {
+    left: 100%;
+}
+
+.carousel_item__prev {
+    transform: translateX(100%);
+    transition: transform .5s ease-in-out;
+}
+
+.carousel_item__next {
+    transform: translateX(-100%);
+    transition: transform .5s ease-in-out;
+}
+
+/* fade effect */
+.carousel__fade .carousel_item__pos_prev,
+.carousel__fade .carousel_item__pos_next {
+    left: 0;
+    opacity: 0;
+}
+
+.carousel__fade .carousel_item__prev,
+.carousel__fade .carousel_item__next {
+    transform: none;
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+}
+
+.carousel__fade .carousel_item__active.carousel_item__prev,
+.carousel__fade .carousel_item__active.carousel_item__next {
+    opacity: 0;
+}
+
+/* carousel */
+.carousel_img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.carousel_indicator {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    z-index: 1;
+}
+
+.carousel_dot {
+    display: block;
+    padding: .25rem;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .5s ease-in-out;
+}
+
+.carousel_dot__active {
+    background-color: lightskyblue;
+    cursor: default;
+    pointer-events: none;
+}
+
+.carousel_control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel_button {
+    display: block;
+    padding-inline: 1rem;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.375rem;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    transition: color .25s;
+    z-index: 1;
+}
+
+.carousel_button:hover {
+    color: rgba(248, 249, 250, 0.75);
+}
+
+/*-------------------------------------------------------- line --------------------------------------- */
+.lines {
+    width: 100%;
+    height: 45px;
+    position: relative;
+}
+
+.lines::after,
+.lines::before {
+    content: '';
+    position: absolute;
+    margin: auto;
+    height: 2px;
+    background: black;
+    width: 40%;
+    top: 45%;
+}
+
+.lines::after {
+    left: 0;
+}
+
+.lines::before {
+    right: 0;
+}
+
+.circle {
+    height: 25px;
+    width: 25px;
+    border: 2px solid black;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+    .circle .diamond {
+        height: 20px;
+        width: 20px;
+    }
+
+    .lines {
+        height: 25px;
+    }
+}
+
+/*-------------------------------------------------- judul halaman -----------------------------------------*/
+.title {
+    padding-top: 50px;
+    text-align: center;
+    font-family: 'DM Serif Display';
+}
+
+/*-------------------------------------------------- profile ------------------------------------------------*/
+.card-profile {
+    padding-top: 50px;
+}
+
+.card-profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+/*------------------------------------------------------ card keluarga ---------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.container-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper {
+    height: 400px;
+    width: 320px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.wrapper .card {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    background: #ffffff;
+    border-radius: 10px;
+    transform: translateY(0deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.wrapper:hover>.front-face {
+    transform: rotateY(-180deg);
+}
+
+.wrapper .card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.wrapper .back-face {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    transform: rotateY(180deg);
+}
+
+.wrapper:hover>.back-face {
+    transform: rotateY(0deg);
+}
+
+.wrapper .back-face img {
+    height: 150px;
+    width: 150px;
+    padding: 5px;
+    border-radius: 50%;
+    background: linear-gradient(375deg, cyan, #2e98de);
+}
+
+.wrapper .back-face .info {
+    text-align: center;
+}
+
+.back-face .info .title {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.back-face ul {
+    display: flex;
+}
+
+.back-face ul a {
+    display: block;
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    text-align: center;
+    margin: 0 5px;
+    line-height: 38px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: linear-gradient(375deg, cyan, #2e98de);
+    transition: all 0.5s ease;
+}
+
+.back-face ul a:hover {
+    color: #1cc7d0;
+    border-color: #1cc7d0;
+    background: linear-gradient(375deg, transparent, transparent);
+}
+
+.shadow-effect {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/*-------------------------------------------- see all product ----------------------------------------------------*/
+.all-product {
+    padding-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 25%;
+    font-size: 30px;
+    font-family: 'DM Serif Display';
+    font-style: italic;
+}
+
+.list-product {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+.list-product:hover{
+    color: #0067bb;
+}
+.list-product ion-icon {
+    margin-left: 10px;
+}
+/*-------------------------------------------- logo books ----------------------------------------------------*/
+.logo-books {
+    padding-top: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-books .books {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.logo-books .books:hover {
+    color: rgb(2, 118, 226);
+}
+
+/* Atur ukuran ikon sesuai kebutuhan Anda */
+.logo-books .books ion-icon {
+    font-size: 200px;
+    /* Misalnya, atur ukuran 48px, tetapi Anda bisa mengganti dengan ukuran yang Anda inginkan */
+}
+
+.results {
+    max-width: 200%;
+    height: 70vh;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: auto;
+}
+/*-------------------------------------------- Testimoni ----------------------------------------------------*/
+.testimoni{
+    padding-top: 30px;
+    max-width: 200%;
+    height: 60vh;
+}
+.results-Testimoni{
+    overflow: auto;
+    height: 100%;
+}
+/*-------------------------------------------- MAPS ----------------------------------------------------*/
+.container-maps{
+    padding-top: 50px;
+}
+iframe{
+    width: 100%;
+    height: 700px;
+}
